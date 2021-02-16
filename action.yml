@@ -1,0 +1,39 @@
+name: Ready-to-use Ansible-Playbook environment
+description: GitHub Action for executing Ansible-Playbooks
+author: Sakul6499 | Lukas Weber
+inputs:
+  playbook_file:
+    description: The main Ansible-Playbook file (your root file)
+    required: true
+  inventory_file:
+    description: The Ansible inventory file (list your target hosts in here)
+    required: true
+  requirements_file:
+    description: The Ansible requirements file (list your non-`buildin` modules here)
+    required: false
+  working_directory:
+    description: The working directory for the LaTeX engine
+    required: false
+  additional_arguments:
+    description: Arguments parsed to the LaTeX compiler
+    default: "-vv"
+    required: false
+  pre_task:
+    description: Shell commands to execute _BEFORE_ executing the Ansible-Playbook
+    required: false
+  post_task:
+    description: Shell commands to execute _AFTER_ executing the Ansible-Playbook
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.playbook_file }}
+    - ${{ inputs.inventory_file }}
+    - ${{ inputs.requirements_file }}
+    - ${{ inputs.additional_arguments }}
+    - ${{ inputs.pre_task }}
+    - ${{ inputs.post_task }}
+branding:
+  icon: book
+  color: green
