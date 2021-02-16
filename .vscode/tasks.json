@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Docker-Image",
+            "type": "shell",
+            "command": "docker build -t registry.sakul6499.de/github_action/ansible:dev .",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
