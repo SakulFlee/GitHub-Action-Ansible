@@ -1,0 +1,7 @@
+---
+- name: Test Playbook
+  hosts: local
+  tasks:
+    - name: Validate Ansible is working
+      ansible.builtin.debug:
+        msg: Ansible seems to be working!
