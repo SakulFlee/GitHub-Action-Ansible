@@ -1,11 +1,17 @@
 FROM ubuntu:latest
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install --fix-missing -y python3-pip && \
-    pip3 install ansible && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# Env's
+ENV DEBIAN_FRONTEND="noninteractive" 
+ENV TZ="Europe/London"
+
+# Installing packages
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install --fix-missing -y python3-pip
+RUN apt-get install --fix-missing -y ssh
+RUN pip3 install ansible
+RUN apt-get clean 
+RUN rm -rf /var/lib/apt/lists/*
 
 # Entrypoint
 ## Copy entrypoint
