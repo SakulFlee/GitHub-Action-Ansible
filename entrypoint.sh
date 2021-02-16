@@ -33,10 +33,10 @@ if [ -z "$INVENTORY_FILE" ]; then
 fi
 
 # --- Pre Task ---
-if [ ! -z "$PRE_TASK" ]; then 
+if [ ! -z "$PRE_TASK" ]; then
     echo ""
     echo ">>> Running pre task"
-
+    
     eval "$PRE_TASK"
 fi
 
@@ -44,7 +44,7 @@ fi
 if [ ! -z "$REQUIREMENTS_FILE" ]; then
     echo ""
     echo ">>> Installing requirements"
-
+    
     eval "ansible-galaxy install -r $REQUIREMENTS_FILE"
 fi
 
@@ -52,7 +52,7 @@ fi
 echo ""
 echo ">>> Execute Playbook"
 
-eval "ansible-palybook -i $INVENTORY_FILE $ADDITIONAL_ARGUMENTS $PLAYBOOK_FILE"
+eval "ansible-playbook -i $INVENTORY_FILE $ADDITIONAL_ARGUMENTS $PLAYBOOK_FILE"
 EXIT_STATUS=$?
 if [ $EXIT_STATUS -ne 0 ]; then
     echo "Ansible-Playbook execution failed. Check the log (above) for more information."
@@ -60,9 +60,9 @@ if [ $EXIT_STATUS -ne 0 ]; then
 fi
 
 # --- Post Task ---
-if [ ! -z "$POST_TASK" ]; then 
+if [ ! -z "$POST_TASK" ]; then
     echo ""
     echo ">>> Running post task"
-
+    
     eval "$POST_TASK"
 fi
