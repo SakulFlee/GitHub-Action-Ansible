@@ -11,9 +11,6 @@ inputs:
   requirements_file:
     description: The Ansible requirements file (list your non-`buildin` modules here)
     required: false
-  working_directory:
-    description: The working directory for the LaTeX engine
-    required: false
   additional_arguments:
     description: Arguments parsed to the LaTeX compiler
     default: "-vv"
