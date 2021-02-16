@@ -1,0 +1,19 @@
+name: Test Actiong
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Ready-to-use Ansible-Playbook environment
+        uses: Sakul6499/GitHub-Action-Ansible@v0.0.1
+        with:
+          playbook_file: test_project/playbook.yml
+          inventory_file: test_project/inventory.cfg
+          requirements_file: test_project/requirements.yml
