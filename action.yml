@@ -12,7 +12,7 @@ inputs:
     description: The Ansible requirements file (list your non-`buildin` modules here)
     required: false
   additional_arguments:
-    description: Arguments parsed to the LaTeX compiler
+    description: Arguments parsed to Ansible
     default: "-vv"
     required: false
   pre_task:
